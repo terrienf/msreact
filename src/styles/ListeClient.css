@@ -1,0 +1,29 @@
+.ms-client {
+    width: 100%;
+}
+
+.ms-client-list {
+    list-style-type: none;
+    padding: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.ms-client-list, h1 {
+    text-align: center;
+}
+
+.ms-client-item {
+    height: 50px;
+    width: 100px;
+    border-radius: 10px;
+    border: 1px solid;
+    object-fit: cover;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-transform: capitalize;
+}

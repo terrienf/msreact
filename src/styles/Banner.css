@@ -1,0 +1,19 @@
+.MS-banner {
+    color: black;
+    text-align: right;
+    padding: 32px;
+    border-bottom: solid 3px black;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+    align-items: center;
+}
+
+.MS-title {
+    padding-left: 32px;
+}
+
+.MS-logo {
+    height: 50px;
+    width: 150px;
+}

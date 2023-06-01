@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import '../src/styles/Banner.css'
+import logo from '../src/assets/logo.png'
+import Banner from "./Component/Banner"
+import Client from './Component/Client'
+import Login from "./Pages/Auth/Login";
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div>
+          <Banner>
+              <img src={logo} alt='La maison jungle' className='MS-logo' />
+              <h1 className='MS-title'>MédiaSofts</h1>
+          </Banner>
+          <div>
+          <Client />
+          </div>
+          <div>
+              <Login/>
+          </div>
+      </div>
+
   );
 }
 
