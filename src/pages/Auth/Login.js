@@ -1,29 +1,31 @@
 import React, {useState} from 'react';
-import axios from "axios";
 import {accountService} from "../../services/account.service";
 import "./auth.css"
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
+    let navigate = useNavigate()
     // const [login, setLogin] = useState('')
     // const[password, setPassword] = useState('')
     const [credentials, setCredentials] = useState({
         username: "admin@ms.com",
         password: "password"
     })
-
+//Gestion de la modification des champs du formulaire de login
     const onChange = (e) => {
         setCredentials({
             ...credentials,
             [e.target.name]: e.target.value
         })
     }
+    //Envoi du formulaire
     const onSubmit = (e) => {
         e.preventDefault()
-        console.log(credentials)
-        axios.post('http://127.0.0.1:8000/api/login_check', credentials)
-            .then(res =>{
-                console.log(res)
+        accountService.login(credentials)
+            .then(res => {
+                //Sauvegarde du token et envoi vers admin
                 accountService.saveToken(res.data.token)
+                navigate('/admin', {replace: true})
             })
             .catch(error => console.log(error))
     }

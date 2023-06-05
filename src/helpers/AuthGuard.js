@@ -4,7 +4,9 @@ import {Navigate} from "react-router-dom";
 const AuthGuard = ({children}) => {
 
     if (!accountService.isLogged()){            /*isLogged renvoi un boolén*/
-        return <Navigate to="/login"/>
+        return <Navigate to="/auth/login"/>
     }
     return children
-}
+};
+
+export default AuthGuard;

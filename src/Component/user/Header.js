@@ -9,9 +9,10 @@ const Header = () => {
             <img src={logo} alt='mediasofts' className='MS-ulogo'/>
             <nav>
                 <ul>
-                    <li><Link to="/home">Accueil</Link></li>
-                    <li><Link to="/infos">Infos</Link></li>
-                    <li><Link to="/clients">Clients</Link></li>
+                    <li><Link to="home">Accueil</Link></li>
+                    <li><Link to="infos">Infos</Link></li>
+                    <li><Link to="clients">Clients</Link></li> |
+                    <li><Link to="admin">Admin</Link></li>
                 </ul>
             </nav>
         </header>

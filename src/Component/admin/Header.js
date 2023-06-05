@@ -1,9 +1,15 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import logo from './logo.png'
 import './header.css'
+import {accountService} from "../../services/account.service";
 
 const Header = () => {
+    let navigate = useNavigate()
+    const logout = () => {
+        accountService.logout ()
+        navigate ('/')
+    }
     return (
         <header className='aheader'>
             <img src={logo} alt='mediasofts' className='MS-alogo'/>
@@ -12,6 +18,7 @@ const Header = () => {
                     <li><Link to="/home">Accueil</Link></li>
                     <li><Link to="/infos">Infos</Link></li>
                     <li><Link to="/clients">Clients</Link></li>
+                    <button onClick={logout}>Logout</button>
                 </ul>
             </nav>
         </header>

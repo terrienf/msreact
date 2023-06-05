@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {getClients} from "../../api/ApiClient";
 import '../../styles/ListeClient.css'
-import Header from "../../Component/user/Header";
 
 function Clients() {
     const [clients, setClients] = useState([]);
