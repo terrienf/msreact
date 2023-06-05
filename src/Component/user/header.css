@@ -1,0 +1,31 @@
+.uheader {
+    color: black;
+    text-align: center;
+    padding: 32px;
+    border-bottom: solid 1px black;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+}
+
+.MS-ulogo {
+    height: 50px;
+    width: 150px;
+    justify-self: end;
+}
+
+.uheader ul {
+    list-style: none;
+    padding: 0px;
+    text-align: center;
+}
+
+.uheader ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.uheader a {
+    text-decoration: none;
+    color: black;
+}

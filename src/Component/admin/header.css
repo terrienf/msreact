@@ -1,0 +1,32 @@
+.aheader {
+    color: black;
+    background-color: #61dafb;
+    text-align: center;
+    padding: 32px;
+    border-bottom: solid 1px red;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+}
+
+.MS-alogo {
+    height: 50px;
+    width: 150px;
+    justify-self: end;
+}
+
+.aheader ul {
+    list-style: none;
+    padding: 0px;
+    text-align: center;
+}
+
+.aheader ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.aheader ul li a {
+    text-decoration: none;
+    color: black;
+}

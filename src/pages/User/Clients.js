@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
-import {getClients} from "../api/ApiClient";
-import '../styles/ListeClient.css'
+import {getClients} from "../../api/ApiClient";
+import '../../styles/ListeClient.css'
+import Header from "../../Component/user/Header";
 
-function Client() {
+function Clients() {
     const [clients, setClients] = useState([]);
 
     useEffect(()=> {
@@ -16,6 +17,7 @@ function Client() {
 
     return (
         <div className="ms-client">
+
             <h1>Liste des clients</h1>
             <ul className="ms-client-list">
                 {clients.map(({name, id})=>(
@@ -25,4 +27,4 @@ function Client() {
         </div>
     );
 }
-export default Client;
+export default Clients;

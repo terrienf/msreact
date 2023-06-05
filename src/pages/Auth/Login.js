@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import axios from "axios";
+import {accountService} from "../../services/account.service";
+import "./auth.css"
 
 const Login = () => {
     // const [login, setLogin] = useState('')
     // const[password, setPassword] = useState('')
     const [credentials, setCredentials] = useState({
-        username :'user@ms.com',
-        password: 'password'
+        username: "admin@ms.com",
+        password: "password"
     })
 
     const onChange = (e) => {
@@ -19,7 +21,10 @@ const Login = () => {
         e.preventDefault()
         console.log(credentials)
         axios.post('http://127.0.0.1:8000/api/login_check', credentials)
-            .then(res =>console.log(res))
+            .then(res =>{
+                console.log(res)
+                accountService.saveToken(res.data.token)
+            })
             .catch(error => console.log(error))
     }
     return (

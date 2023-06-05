@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
+import Header from "../../Component/user/Header";
 
 function Infos() {
     const [infos, setInfos] = useState([]);
 
     useEffect(() => {
         const fetchInfos = async () => {
-            const {data} = await axios.get("http://127.0.0.1:8000/api/infos_clients");
+            const {data} = await axios.get("http://127.0.0.1:8000/api/infos");
             console.log(data['hydra:member'])
             setInfos(data['hydra:member']);
         };
