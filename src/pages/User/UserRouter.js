@@ -3,7 +3,7 @@ import {Route, Routes} from "react-router-dom";
 import Login from "../Auth/Login";
 import Error from "../../utils/error";
 
-import {Layout, Home, Clients, Infos} from "../User"
+import {Layout, Home, Infos} from "../User"
 
 const UserRouter = () => {
     return (
@@ -15,7 +15,6 @@ const UserRouter = () => {
 
                     <Route path="/home" element={<Home/>}/>
                     <Route path="/infos" element={<Infos/>}/>
-                    <Route path="/clients" element={<Clients/>}/>
                     <Route path="/login" element={<Login/>}/>
 
                     <Route path="*" element={<Error/>}/>
