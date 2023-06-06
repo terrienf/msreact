@@ -21,7 +21,7 @@ const AdminRouter = () => {
 
                 <Route path="client">
                     <Route path="index" element={<Client/>}/>
-                    <Route path="clientEdit" element={<ClientEdit/>}/>
+                    <Route path="clientEdit/:cid" element={<ClientEdit/>}/>
                     <Route path="clientAdd" element={<ClientAdd/>}/>
                 </Route>
                 <Route path="*" element={<Error/>}/>

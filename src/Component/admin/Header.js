@@ -16,8 +16,8 @@ const Header = () => {
             <nav>
                 <ul>
                     <li><Link to="/home">Accueil</Link></li>
-                    <li><Link to="/infos">Infos</Link></li>
-                    <li><Link to="/clients">Clients</Link></li>
+                    {/*<li><Link to="/infos">Infos</Link></li>*/}
+                    {/*<li><Link to="/admin/client/index">Clients</Link></li>*/}
                     <button onClick={logout}>Logout</button>
                 </ul>
             </nav>

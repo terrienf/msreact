@@ -10,6 +10,17 @@ let getUser = (uid) => {
     return Axios.get ('/users/'+uid)
 }
 
+let updateUser =(user) => {
+    return Axios.put('/users/'+user.id, user)
+}
+
+let addUser = (user) => {
+    return Axios.post('/users', user)
+}
+
+let deleteUser = (uid) => {
+    return Axios.delete('/users/'+uid)
+}
 export const userService = {
-    getAllUsers, getUser
+    getAllUsers, getUser, updateUser, deleteUser, addUser
 }

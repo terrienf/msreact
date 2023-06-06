@@ -1,9 +1,62 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
+import {useNavigate, useParams} from "react-router-dom";
+import {clientService} from "../../../services/client.service";
 
 const ClientEdit = () => {
+    const [client, setClient] = useState()
+    const flag = useRef(false)
+    let navigate = useNavigate()
+
+    //useParams : permet de récupérer le paramètre qui se trouve dans l'URL, l'ID utilisateur
+    const {cid} = useParams()
+
+    //Modification dans le formulaire
+    const onChange = (e) => {
+        e.preventDefault()
+    }
+    //Envoi du formulaire
+    const onSubmit = (e) => {
+        e.preventDefault()
+        clientService.updateClient(client)
+            .then(res => {
+                navigate('../index')
+            })
+            .catch(err => console.log(err))
+    }
+
+    useEffect(() => {
+        if (flag.current === false) {
+            clientService.getClient(cid)
+                .then(res => {
+                    console.log(res.data)
+                    setClient(res.data)
+                })
+                .catch(err => console.log(err))
+        }
+        return () => flag.current = true
+    }, [])
+
+
     return (
         <div className="clientEdit">
-Client edit
+            client Edit
+            <form onSubmit={onSubmit}>
+                <div className="group">
+                    <label htmlFor="name">Name</label>
+                    <input type="text" name="name" value={client.name} onChange={onChange} />
+                </div>
+                <div className="group">
+                    <label htmlFor="code">Code</label>
+                    <input type="text" name="code" value={client.code} onChange={onChange} />
+                </div>
+                <div className="group">
+                    <label htmlFor="id_client">id_client</label>
+                    <input type="text" name="id_client" value={client.idClient} onChange={onChange} />
+                </div>
+                <div className="group">
+                    <button>Modifier</button>
+                </div>
+            </form>
         </div>
     );
 };
