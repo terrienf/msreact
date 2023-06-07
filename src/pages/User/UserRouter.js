@@ -14,7 +14,7 @@ const UserRouter = () => {
                     <Route index element={<Home/>}/>
 
                     <Route path="/home" element={<Home/>}/>
-                    <Route path="/infos" element={<Infos/>}/>
+                    <Route path="/infos/:cid" element={<Infos/>}/>
                     <Route path="/login" element={<Login/>}/>
 
                     <Route path="*" element={<Error/>}/>

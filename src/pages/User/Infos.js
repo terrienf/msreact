@@ -1,48 +1,28 @@
-import React, {useEffect, useState} from "react";
-import axios from "axios";
-import Header from "../../Component/user/Header";
+import React, {useEffect, useState} from 'react';
+import {clientService} from "../../services/client.service";
+import {useParams} from "react-router-dom";
 
-function Infos() {
-    const [infos, setInfos] = useState([]);
+const Infos = () => {
+    const [client, setClient] = useState({})
+    let {cid} = useParams()
 
     useEffect(() => {
-        const fetchInfos = async () => {
-            const {data} = await axios.get("http://127.0.0.1:8000/api/infos");
-            console.log(data['hydra:member'])
-            setInfos(data['hydra:member']);
-        };
-        fetchInfos();
-    }, []);
+        clientService.getClient(cid)
+            .then(res => setClient(res.data))
+            .catch(err => console.log(err))
+
+    }, [])
 
     return (
-        <div className="Infos">
-            <h2>Informations clients :</h2>
-            <table>
-                <thead>
-                <tr>
-                    <th>Client ID</th>
-                    <th>Version</th>
-                    <th>Adresse IP</th>
-                    <th>Protocole</th>
-                    <th>Port</th>
-                    <th>Dernière utilisation</th>
-                </tr>
-                </thead>
-                <tbody>
-                {infos.map((item, index) => (
-                    <tr key={index}>
-                        <td>{item.clientId}</td>
-                        <td>{item.version}</td>
-                        <td>{item.ipAdress}</td>
-                        <td>{item.protocole ? "HTTPS" : "HTTP"}</td>
-                        <td>{item.port}</td>
-                        <td>{item.updateAt}</td>
-                    </tr>
-                ))}
-                </tbody>
-            </table>
+        <div>
+            <ul>
+                <li>{client.name}</li>
+                <li>{client.idClient}</li>
+                <li>{client.code}</li>
+                <li>{client.info}</li>
+            </ul>
         </div>
     );
-}
+};
 
 export default Infos;

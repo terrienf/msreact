@@ -30,8 +30,8 @@ const UserAdd = () => {
             User Add
             <form onSubmit={onSubmit}>
                 <div className="group">
-                    <label htmlFor="username">Email</label>
-                    <input type="text" name="username" onChange={onChange} />
+                    <label htmlFor="email">Email</label>
+                    <input type="email" name="email" onChange={onChange} />
                 </div>
 
                 <div className="group">

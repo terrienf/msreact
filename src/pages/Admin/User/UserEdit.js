@@ -17,7 +17,7 @@ const UserEdit = () => {
         setUser({
             ...user,
             [e.target.name]: e.target.value
-        })
+        });
     }
     // Soumission du formulaire
     const onSubmit = (e) => {
@@ -34,13 +34,13 @@ const UserEdit = () => {
         if (flag.current === false) {
             userService.getUser(uid)
                 .then(res => {
-                    setUser(res.data.data)
+                    console.log(res.data)
+                    setUser(res.data)
                 })
                 .catch(err => console.log(err))
         }
-
         return () => flag.current = true
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+
     }, [])
 
 
@@ -48,17 +48,17 @@ const UserEdit = () => {
         <div className="userEdit">
             user edit
             <form onSubmit={onSubmit}>
-                <div className="group">
-                    <label htmlFor="login">Identifiant</label>
-                    <input type="text" name="username" value={user.name} onChange={onChange}/>
-                </div>
+                {/*<div className="group">*/}
+                {/*    <label htmlFor="login">Identifiant</label>*/}
+                {/*    <input type="text" name="username" value={user.username} onChange={onChange}/>*/}
+                {/*</div>*/}
                 <div className="group">
                     <label htmlFor="login">email</label>
-                    <input type="text" name="email" value={user.name} onChange={onChange}/>
+                    <input type="text" name="email" value={user.email} onChange={onChange}/>
                 </div>
                 <div className="group">
                     <label htmlFor="password">Mot de passe</label>
-                    <input type="text" name="password" value={user.name} onChange={onChange}/>
+                    <input type="password" name="password" value={user.password} onChange={onChange}/>
                 </div>
                 <div className="group">
                     <button>Modifier</button>

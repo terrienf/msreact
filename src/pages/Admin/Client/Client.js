@@ -7,6 +7,7 @@ const User = () => {
     const flag = useRef(false)
 
 
+
 // Récupération de la liste des clients à l'affichage
     useEffect(() => {
         if (flag.current === false) {
@@ -22,7 +23,6 @@ const User = () => {
     }, [])
 
     const delClient = (clientId) => {
-        console.log(clientId)
         clientService.deleteClient(clientId)
             .then(res => {
                 console.log(res)

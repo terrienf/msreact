@@ -15,6 +15,7 @@ const User = () => {
         if (flag.current === false) {
             userService.getAllUsers()
                 .then(res => {
+                    console.log(res.data)
                     setUsers(res.data)
                 })
                 .catch(err => console.log(err))
@@ -26,7 +27,6 @@ const User = () => {
         console.log(userId)
         userService.deleteUser(userId)
             .then(res => {
-                console.log(res)
                 setUsers((current) => current.filter(user => user.id !== userId))
             })
             .catch(err => console.log(err))
@@ -40,7 +40,7 @@ const User = () => {
                 <tr>
                     <th>#</th>
                     <th>email</th>
-                    <th>username</th>
+                    {/*<th>username</th>*/}
                 </tr>
                 </thead>
 
@@ -50,7 +50,8 @@ const User = () => {
                         <tr key={user.id}>
                             <td>{user.id}</td>
                             <td>{user.email}</td>
-                            <td>{user.username}</td>
+                            <td>{user.roles}</td>
+                            {/*<td>{user.username}</td>*/}
                             <td>
                                 <Link to={`/admin/user/userEdit/${user.id}`}>
                                     <button className="edit_UserButton">Modifier</button>

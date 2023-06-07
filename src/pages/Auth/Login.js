@@ -11,6 +11,7 @@ const Login = () => {
         username: "admin@ms.com",
         password: "password"
     })
+
 //Gestion de la modification des champs du formulaire de login
     const onChange = (e) => {
         setCredentials({
@@ -24,7 +25,10 @@ const Login = () => {
         accountService.login(credentials)
             .then(res => {
                 //Sauvegarde du token et envoi vers admin
+                console.log({ username: credentials.username, password: '********' })
                 accountService.saveToken(res.data.token)
+                const roles = res.data.roles;
+                console.log("Roles:", roles);
                 navigate('/admin', {replace: true})
             })
             .catch(error => console.log(error))
@@ -37,7 +41,7 @@ const Login = () => {
             </div>
             <div className="group">
                 <label htmlFor="password">Mot de passe</label>
-                <input type="text" name="password" value={credentials.password} onChange={onChange}/>
+                <input type="password" name="password" value={credentials.password} onChange={onChange}/>
             </div>
             <div className="group">
                 <button>Connexion</button>

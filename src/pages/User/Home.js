@@ -1,23 +1,13 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {clientService} from "../../services/client.service";
-
+import Card from "../../Component/user/Card";
+import './layout.css'
 
 const Home = () => {
-    const [clients, setClients] = useState([])
-    const flag = useRef (false)
-
-    useEffect(() => {
-        if(flag.current === false){
-            clientService.getAllClients()
-                .then(res=> setClients(res.data))
-                .catch(err=>console.log(err))
-        }
-return() => flag.current = true
-    }, [])
 
     return (
         <div className='home'>
-            Home
+            <h1>Bienvenue</h1>
         </div>
     );
 };
