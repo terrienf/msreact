@@ -9,7 +9,7 @@ const Login = () => {
     // const[password, setPassword] = useState('')
     const [credentials, setCredentials] = useState({
         username: "admin@ms.com",
-        password: "password"
+        password: "password",
     })
 
 //Gestion de la modification des champs du formulaire de login

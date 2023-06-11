@@ -1,13 +1,12 @@
-import React, {useEffect, useRef, useState} from 'react';
-import {clientService} from "../../services/client.service";
-import Card from "../../Component/user/Card";
+import React from 'react';
 import './layout.css'
+import logo from "../../Component/admin/logo.png";
 
 const Home = () => {
 
     return (
-        <div className='home'>
-            <h1>Bienvenue</h1>
+        <div className='accueil'>
+            <img src={logo} alt='mediasofts'/>
         </div>
     );
 };

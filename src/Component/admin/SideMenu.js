@@ -24,6 +24,13 @@ const SideMenu = ({Roles}) => {
                         <li><Link to="/admin/client/clientAdd">Ajouter</Link></li>
                     </ul>
                 </li>
+                <li>
+                    Info
+                    <ul>
+                        <li><Link to="/admin/info/index">Liste</Link></li>
+                        <li><Link to="/admin/info/infoAdd">Ajouter</Link></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     );

@@ -10,7 +10,10 @@ const Dashboard = () => {
     useEffect(() => {
         if(flag.current === false){
             clientService.getAllClients()
-                .then(res=> setClients(res.data))
+                .then(res=> {
+                    console.log(res.data)
+                    setClients(res.data)
+                })
                 .catch(err=>console.log(err))
         }
         return() => flag.current = true

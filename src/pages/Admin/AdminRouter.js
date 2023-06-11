@@ -5,6 +5,7 @@ import {User, UserEdit, UserAdd} from "./User";
 import {Client, ClientAdd, ClientEdit} from "./Client";
 import Error from "../../utils/error";
 import './admin.css';
+import {Info, InfoAdd, InfoEdit} from "./Info";
 
 const AdminRouter = () => {
     return (
@@ -24,6 +25,13 @@ const AdminRouter = () => {
                     <Route path="clientEdit/:cid" element={<ClientEdit/>}/>
                     <Route path="clientAdd" element={<ClientAdd/>}/>
                 </Route>
+
+                <Route path="info">
+                    <Route path="index" element={<Info />}/>
+                    <Route path="infoEdit/:iid" element={<InfoEdit/>}/>
+                    <Route path="infoAdd" element={<InfoAdd/>}/>
+                </Route>
+
                 <Route path="*" element={<Error/>}/>
             </Route>
         </Routes>
