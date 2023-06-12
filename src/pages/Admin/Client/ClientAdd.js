@@ -30,16 +30,16 @@ const ClientAdd = () => {
             <form onSubmit={onSubmit}>
                 <div className="group">
                     <label htmlFor="name">Name</label>
-                    <input type="text" name="name" onChange={onChange} />
+                    <input type="text" name="name" onChange={onChange}/>
                 </div>
 
                 <div className="group">
                     <label htmlFor="code">Code</label>
-                    <input type="text" name="code" onChange={onChange} />
+                    <input type="text" name="code" onChange={onChange}/>
                 </div>
                 <div className="group">
                     <label htmlFor="id_client">id_client</label>
-                    <input type="text" name="id_client" onChange={onChange} />
+                    <input type="text" name="id_client" onChange={onChange}/>
                 </div>
                 <div className="group">
                     <button>Ajouter</button>

@@ -1,7 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {clientService} from "../../../services/client.service";
-import {log} from "@craco/craco/dist/lib/logger";
+
 
 const ClientEdit = () => {
     const [client, setClient] = useState([])
@@ -34,6 +34,7 @@ const ClientEdit = () => {
             clientService.getClient(cid)
                 .then(res => {
                     console.log(res.data)
+                    // alert("Modification effectuée avec succès")
                     setClient(res.data)
                 })
                 .catch(err => console.log(err))

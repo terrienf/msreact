@@ -13,18 +13,29 @@ const InfoEdit = () => {
 
     //Modification dans le formulaire
     const onChange = (e) => {
-        setInfo({
-            ...info,
-            [e.target.name]: e.target.value
-        });
+        const { name, checked } = e.target;
+        if (name === 'http' || name === 'https') {
+            setInfo((prevInfo) => ({
+                ...prevInfo,
+                protocole: name === 'http' ? !checked : checked,
+            }));
+        } else {
+            setInfo((prevInfo) => ({
+                ...prevInfo,
+                [name]: e.target.value,
+            }));
+        }
     };
+
 
     //Envoi du formulaire
     const onSubmit = (e) => {
         e.preventDefault()
         infoService.updateInfo(info)
             .then(res => {
-                navigate('../index')
+                console.log(info)
+                alert("Modification effectuée avec succès")
+                navigate('../../dashboard')
             })
             .catch(err => console.log(err))
     }
@@ -33,7 +44,6 @@ const InfoEdit = () => {
         if (flag.current === false) {
             infoService.getInfo(iid)
                 .then(res => {
-                    console.log(res.data)
                     setInfo(res.data)
                 })
                 .catch(err => console.log(err))
@@ -47,19 +57,42 @@ const InfoEdit = () => {
             info Edit
             <form onSubmit={onSubmit}>
                 <div className="group">
-                    <label htmlFor="version">Version</label>
+                    <label htmlFor="verion">Version</label>
                     <input type="text" name="version" value={info.version} onChange={onChange} />
                 </div>
                 <div className="group">
-                    <label htmlFor="ipAdress">Code</label>
+                    <label htmlFor="ipAdress">Adresse IP</label>
                     <input type="text" name="ipAdress" value={info.ipAdress} onChange={onChange} />
                 </div>
                 <div className="group">
-                    <label htmlFor="protocole">protocole</label>
-                    <input type="text" name="protocole" value={info.protocole} onChange={onChange} />
+                    <label htmlFor="port">Port</label>
+                    <input type="text" name="port" value={info.port} onChange={onChange} />
                 </div>
                 <div className="group">
-                    <button>Modifier</button>
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="http"
+                            checked={!info.protocole}
+                            onChange={onChange}
+                        />
+                        HTTP
+                        <input
+                            type="checkbox"
+                            name="https"
+                            checked={info.protocole}
+                            onChange={onChange}
+                        />
+                        HTTPS
+                    </label>
+                </div>
+                <div className="group">
+                    <label htmlFor="updateAt">Mise à jour le : </label>
+                    <input type="date" name="updateAt" onChange={onChange} />
+                </div>
+                {/*{JSON.stringify(info)}*/}
+                <div className="group">
+                    <button>Mettre à jour</button>
                 </div>
             </form>
         </div>

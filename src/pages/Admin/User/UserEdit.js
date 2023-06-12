@@ -34,7 +34,7 @@ const UserEdit = () => {
         if (flag.current === false) {
             userService.getUser(uid)
                 .then(res => {
-                    console.log(res.data)
+                    alert("Modification effectuée avec succès")
                     setUser(res.data)
                 })
                 .catch(err => console.log(err))

@@ -11,7 +11,6 @@ const Dashboard = () => {
         if(flag.current === false){
             clientService.getAllClients()
                 .then(res=> {
-                    console.log(res.data)
                     setClients(res.data)
                 })
                 .catch(err=>console.log(err))

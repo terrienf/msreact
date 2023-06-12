@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {clientService} from "../../services/client.service";
-import {useParams} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 const Infos = () => {
     const [client, setClient] = useState({})
@@ -23,23 +23,37 @@ const Infos = () => {
                 <li>{client.idClient}</li>
                 <li>{client.code}</li>
                 <li>
-                    {client.infos ? (
+                    {client.infos && client.infos.length > 0 ? (
                         <ul>
                             {client.infos.map((info) => (
                                 <li key={info.id}>
-                                    Version: {info.version}, IP: {info.ipAdress}, Protocole: {info.protocole ? 'HTTP' : 'HTTPS'}, Port: {info.port}
+                                    <ul>
+                                        <li>Version: {info.version}</li>
+                                        <li>IP: {info.ipAdress}</li>
+                                        <li>Protocole: {info.protocole ? 'HTTP' : 'HTTPS'}</li>
+                                        <li>Port: {info.port}</li>
+                                        <li>Dernière utilisation : {info.updateAt}</li>
+                                    </ul>
+                                        <td>
+                                            <Link to={`/admin/info/infoEdit/${info.id}`}>
+                                                <button className="edit_infoButton">Modifier les infos</button>
+                                            </Link>
+                                        </td>
                                 </li>
                             ))}
                         </ul>
                     ) : (
-                        <p>Aucune information disponible.</p>
+                        <li>
+                            <Link to={`/admin/info/infoAdd`}>
+                                <button className="add_infoButton">Ajouter des infos</button>
+                            </Link>
+                        </li>
                     )}
                 </li>
             </ul>
         </div>
+    )
 
-
-    );
 };
 
 export default Infos;

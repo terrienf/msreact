@@ -52,7 +52,6 @@ const UserAdd = () => {
                     <label htmlFor="password">Mot de passe</label>
                     <input type="password" name="password" onChange={onChange} />
                 </div>
-
                 <div className="group">
                     <label>
                         <input
