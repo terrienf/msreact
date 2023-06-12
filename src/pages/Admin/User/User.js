@@ -38,7 +38,9 @@ const User = () => {
             <table>
                 <thead>
                 <tr>
-                    <th>#</th>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
                     <th>email</th>
                     {/*<th>username</th>*/}
                 </tr>
@@ -49,9 +51,10 @@ const User = () => {
                     users.map(user => (
                         <tr key={user.id}>
                             <td>{user.id}</td>
+                            <td>{user.name}</td>
+                            <td>{user.lastname}</td>
                             <td>{user.email}</td>
-                            <td>{user.roles}</td>
-                            {/*<td>{user.username}</td>*/}
+                            {/*<td>{user.roles}</td>*/}
                             <td>
                                 <Link to={`/admin/user/userEdit/${user.id}`}>
                                     <button className="edit_UserButton">Modifier</button>

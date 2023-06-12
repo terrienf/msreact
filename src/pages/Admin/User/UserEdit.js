@@ -24,6 +24,7 @@ const UserEdit = () => {
         e.preventDefault()
         userService.updateUser(user)
             .then(res => {
+                alert("Modification effectuée avec succès")
                 navigate('../index')
             })
             .catch(err => console.log(err))
@@ -34,7 +35,7 @@ const UserEdit = () => {
         if (flag.current === false) {
             userService.getUser(uid)
                 .then(res => {
-                    alert("Modification effectuée avec succès")
+
                     setUser(res.data)
                 })
                 .catch(err => console.log(err))
@@ -53,13 +54,21 @@ const UserEdit = () => {
                 {/*    <input type="text" name="username" value={user.username} onChange={onChange}/>*/}
                 {/*</div>*/}
                 <div className="group">
+                    <label htmlFor="name">Nom</label>
+                    <input type="text" name="name" value={user.name} onChange={onChange}/>
+                </div>
+                <div className="group">
+                    <label htmlFor="lastname">Nom de famille</label>
+                    <input type="text" name="lastname" value={user.lastname} onChange={onChange}/>
+                </div>
+                <div className="group">
                     <label htmlFor="login">email</label>
                     <input type="text" name="email" value={user.email} onChange={onChange}/>
                 </div>
-                <div className="group">
-                    <label htmlFor="password">Mot de passe</label>
-                    <input type="password" name="password" value={user.password} onChange={onChange}/>
-                </div>
+                {/*<div className="group">*/}
+                {/*    <label htmlFor="password">Mot de passe</label>*/}
+                {/*    <input type="password" name="password" value={user.password} onChange={onChange}/>*/}
+                {/*</div>*/}
                 <div className="group">
                     <button>Modifier</button>
                 </div>
