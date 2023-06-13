@@ -5,14 +5,16 @@ import {Link} from "react-router-dom";
 const Card = ({props, image}) => {
 
     return (
-        <Link to={`/infos/${props.id}`} className="card_link">
-            <article className='card_client'>
-                <img src={image + props.id} alt={props.name}/>
-                <div>{props.name}</div>
-            </article>
-        </Link>
-
-            );
-            };
-
-            export default Card;
+        <div className="card">
+            <div className="card-details">
+                <p className="text-title">{props.name}</p>
+                {/*<img src={image + props.id} alt={props.name}/>*/}
+                {/*<p className="text-body">Here are the details of the card</p>*/}
+            </div>
+            <Link to={`/infos/${props.id}`} className="card_link">
+                <button className="card-button">Info</button>
+            </Link>
+        </div>
+    );
+}
+export default Card;

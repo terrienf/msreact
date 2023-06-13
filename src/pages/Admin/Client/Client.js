@@ -1,6 +1,15 @@
 import React, {useEffect, useRef, useState} from "react";
 import {clientService} from "../../../services/client.service";
 import {Link} from "react-router-dom";
+import '../../../styles/list.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTrash} from '@fortawesome/free-solid-svg-icons'
+import {faClipboard} from '@fortawesome/free-solid-svg-icons'
+
+
+const trash = <FontAwesomeIcon icon={faTrash} />
+const modify = <FontAwesomeIcon icon={faClipboard} />
+
 
 const User = () => {
     const [clients, setClients] = useState([])
@@ -31,36 +40,24 @@ const User = () => {
     }
 
     return (
-        <div className="client">
-            liste client
-            <table>
-                <thead>
-                <tr>
-                    <th>name</th>
-                    <th>code</th>
-                    <th>idClient</th>
-                </tr>
-                </thead>
+    <div className="list">
+        {clients.map(client => (
+            <main className="leaderboard__profiles" key={client.id} title="Afficher les infos">
+                <article className="leaderboard__profile">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="profil" className="leaderboard__picture" />
+                    <span className="leaderboard__name">{client.name} {client.lastname}</span>
+                    <span className="leaderboard__mail">{client.email}</span>
+                    <div className="group-button">
+                        <Link to={`/admin/client/clientEdit/${client.id}`}>
+                            <button className="UserButton" title="Modifier">{modify}</button>
+                        </Link>
+                        <button className="UserButton" onClick={() => delClient(client.id)} title="Supprimer">{trash}</button>
+                    </div>
+                </article>
+            </main>
+        ))}
 
-                <tbody>
-                {
-                    clients.map(client => (
-                        <tr key={client.id}>
-                            <td>{client.name}</td>
-                            <td>{client.code}</td>
-                            <td>{client.idClient}</td>
-                            <td>
-                                <Link to={`/admin/client/clientEdit/${client.id}`}>
-                                    <button className="edit_ClientButton">Modifier</button>
-                                </Link>
-                            </td>
-                            <td><button className="del_clientButton" onClick={() => delClient(client.id)}>Supprimer</button></td>
-                        </tr>
-                    ))
-                }
-                </tbody>
-            </table>
-        </div>
+    </div>
     );
 };
 

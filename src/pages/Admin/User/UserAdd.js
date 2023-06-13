@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { userService } from "../../../services/user.service";
 import bcrypt from 'bcryptjs';
+import '../../../styles/form.css'
 
 const UserAdd = () => {
     const [user, setUser] = useState({
@@ -48,27 +49,30 @@ const UserAdd = () => {
     };
 
     return (
-        <div className="UserEdit">
-            User Add
+        <div className="form">
             <form onSubmit={onSubmit}>
-                <div className="group">
+                <div className="card-header">
+                    <h1>Ajouter un utilisateur</h1>
+                </div>
+                <div className="card-body">
+                <div className="form-group">
                     <label htmlFor="name">Nom</label>
                     <input type="text" name="name" onChange={onChange} />
                 </div>
-                <div className="group">
+                <div className="form-group">
                     <label htmlFor="lastname">Prénom</label>
                     <input type="text" name="lastname" onChange={onChange} />
                 </div>
-                <div className="group">
+                <div className="form-group">
                     <label htmlFor="email">Email</label>
                     <input type="email" name="email" onChange={onChange} />
                 </div>
 
-                <div className="group">
+                <div className="form-group">
                     <label htmlFor="password">Mot de passe</label>
                     <input type="password" name="password" onChange={onChange} />
                 </div>
-                <div className="group">
+                <div className="form-group">
                     <label>
                         <input
                             type="checkbox"
@@ -79,12 +83,14 @@ const UserAdd = () => {
                         Administrateur
                     </label>
                 </div>
+                </div>
 
-                <div className="group">
-                    <button>Ajouter</button>
+                <div className="form-group">
+                    <button className="add-button">Ajouter</button>
                 </div>
             </form>
         </div>
+
     );
 };
 

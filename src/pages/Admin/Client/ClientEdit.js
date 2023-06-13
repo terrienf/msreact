@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {clientService} from "../../../services/client.service";
+import '../../../styles/form.css'
 
 
 const ClientEdit = () => {
@@ -44,23 +45,25 @@ const ClientEdit = () => {
 
 
     return (
-        <div className="clientEdit">
-            client Edit
+        <div className="form">
             <form onSubmit={onSubmit}>
-                <div className="group">
+                <div className="card-header">
+                    <h1>Modifier un client</h1>
+                </div>
+                <div className="form-group">
                     <label htmlFor="name">Name</label>
                     <input type="text" name="name" value={client.name} onChange={onChange} />
                 </div>
-                <div className="group">
+                <div className="form-group">
                     <label htmlFor="code">Code</label>
                     <input type="text" name="code" value={client.code} onChange={onChange} />
                 </div>
-                <div className="group">
+                <div className="form-group">
                     <label htmlFor="id_client">id_client</label>
                     <input type="text" name="idClient" value={client.idClient} onChange={onChange} />
                 </div>
-                <div className="group">
-                    <button>Modifier</button>
+                <div className="form-group">
+                    <button className="add-button">Modifier</button>
                 </div>
             </form>
         </div>

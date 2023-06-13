@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {userService} from "../../../services/user.service";
+import '../../../styles/form.css'
 
 const UserEdit = () => {
     const [user, setUser] = useState([])
@@ -46,31 +47,29 @@ const UserEdit = () => {
 
 
     return (
-        <div className="userEdit">
-            user edit
+        <div className="form">
             <form onSubmit={onSubmit}>
-                {/*<div className="group">*/}
-                {/*    <label htmlFor="login">Identifiant</label>*/}
-                {/*    <input type="text" name="username" value={user.username} onChange={onChange}/>*/}
-                {/*</div>*/}
-                <div className="group">
+                <div className="card-header">
+                    <h1>Modifier un utilisateur</h1>
+                </div>
+                <div className="form-group">
                     <label htmlFor="name">Nom</label>
                     <input type="text" name="name" value={user.name} onChange={onChange}/>
                 </div>
-                <div className="group">
+                <div className="form-group">
                     <label htmlFor="lastname">Nom de famille</label>
                     <input type="text" name="lastname" value={user.lastname} onChange={onChange}/>
                 </div>
-                <div className="group">
-                    <label htmlFor="login">email</label>
+                <div className="form-group">
+                    <label htmlFor="login">Email</label>
                     <input type="text" name="email" value={user.email} onChange={onChange}/>
                 </div>
-                {/*<div className="group">*/}
+                {/*<div className="form-group">*/}
                 {/*    <label htmlFor="password">Mot de passe</label>*/}
                 {/*    <input type="password" name="password" value={user.password} onChange={onChange}/>*/}
                 {/*</div>*/}
-                <div className="group">
-                    <button>Modifier</button>
+                <div className="form-group">
+                    <button className="add-button">Modifier</button>
                 </div>
             </form>
         </div>

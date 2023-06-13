@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import {clientService} from "../../../services/client.service";
+import '../../../styles/form.css'
 
 const ClientAdd = () => {
     const [client, setClient] = useState([])
@@ -25,24 +26,26 @@ const ClientAdd = () => {
     }
 
     return (
-        <div className="clientAdd">
-            client Add
+        <div className="form">
             <form onSubmit={onSubmit}>
-                <div className="group">
+                <div className="card-header">
+                    <h1>Ajouter un client</h1>
+                </div>
+                <div className="form-group">
                     <label htmlFor="name">Name</label>
                     <input type="text" name="name" onChange={onChange}/>
                 </div>
 
-                <div className="group">
+                <div className="form-group">
                     <label htmlFor="code">Code</label>
                     <input type="text" name="code" onChange={onChange}/>
                 </div>
-                <div className="group">
+                <div className="form-group">
                     <label htmlFor="id_client">id_client</label>
                     <input type="text" name="id_client" onChange={onChange}/>
                 </div>
-                <div className="group">
-                    <button>Ajouter</button>
+                <div className="form-group">
+                    <button className="add-button">Ajouter</button>
                 </div>
             </form>
         </div>

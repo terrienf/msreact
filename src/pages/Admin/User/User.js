@@ -1,11 +1,20 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {userService} from "../../../services/user.service";
+import '../../../styles/list.css'
 import {Link} from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTrash} from '@fortawesome/free-solid-svg-icons'
+import {faClipboard} from '@fortawesome/free-solid-svg-icons'
+
+
+const trash = <FontAwesomeIcon icon={faTrash} />
+const modify = <FontAwesomeIcon icon={faClipboard} />
 
 
 //Le UseEffect est en double, puisque qu'il se positionne à cheval avec (Mount, Update, Unmount) il va se déclencher 2 fois, donc fait 2 fois son appel à l'API
 // avec useRef (effet de nettoyage) avec une fonction flag qui empeche le double appel
 const User = () => {
+
     // let navigate = useNavigate()
     const [users, setUsers] = useState([])
     const flag = useRef(false)
@@ -33,40 +42,26 @@ const User = () => {
     }
 
     return (
-        <div className="user">
-            liste user
-            <table>
-                <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nom</th>
-                    <th>Prénom</th>
-                    <th>email</th>
-                    {/*<th>username</th>*/}
-                </tr>
-                </thead>
 
-                <tbody>
-                {
-                    users.map(user => (
-                        <tr key={user.id}>
-                            <td>{user.id}</td>
-                            <td>{user.name}</td>
-                            <td>{user.lastname}</td>
-                            <td>{user.email}</td>
-                            {/*<td>{user.roles}</td>*/}
-                            <td>
-                                <Link to={`/admin/user/userEdit/${user.id}`}>
-                                    <button className="edit_UserButton">Modifier</button>
-                                </Link>
-                            </td>
-                            <td><button className="del_UserButton" onClick={() => delUser(user.id)}>Supprimer</button></td>
-                        </tr>
-                    ))
-                }
-                </tbody>
-            </table>
-        </div>
+            <div className="list">
+                {users.map(user => (
+                    <main className="leaderboard__profiles" key={user.id}>
+                        <article className="leaderboard__profile">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="profil" className="leaderboard__picture" />
+                            <span className="leaderboard__name">{user.name} {user.lastname}</span>
+                            <span className="leaderboard__mail">{user.email}</span>
+                            <div className="group-button">
+                            <Link to={`/admin/user/userEdit/${user.id}`}>
+                                <button className="UserButton" title="Modifier">{modify}</button>
+                            </Link>
+                            <button className="UserButton" onClick={() => delUser(user.id)} title="Supprimer">{trash}</button>
+                            </div>
+                        </article>
+                    </main>
+                ))}
+
+            </div>
+
     );
 };
 

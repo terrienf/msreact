@@ -1,4 +1,4 @@
-.login-card {
+.form {
     background-color: #f8f8f8;
     border-radius: 10px;
     box-sizing: border-box;
@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: top;
     height: 100vh;
     margin: 0 auto;
 }
@@ -36,8 +36,9 @@
 
 input[type="text"],
 input[type="email"],
-input[type="password"] {
+input[type="password"]{
     box-sizing: border-box;
+    width: 100%;
     padding: 10px;
     border-radius: 5px;
     border: none;
@@ -50,7 +51,8 @@ input[type="password"] {
 
 input[type="text"]:focus,
 input[type="email"]:focus,
-input[type="password"]:focus {
+input[type="password"]:focus,
+input[type="checkbox"]:focus {
     box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.3);
     outline: none;
 }
@@ -70,7 +72,7 @@ input[type="submit"]:hover {
     background-color: #0069d9;
 }
 
-.login-button {
+.add-button {
     background-color: #007bff;
     border: none;
     border-radius: 5px;
@@ -83,7 +85,7 @@ input[type="submit"]:hover {
     transition: 0.25s;
 }
 
-.login-button:hover {
+.add-button:hover {
     background-color: #0069d9e7;
     -webkit-box-shadow: 0px 0px 30px 0px rgba(0,105,217,1);
     -moz-box-shadow: 0px 0px 30px 0px rgba(0,105,217,1);
