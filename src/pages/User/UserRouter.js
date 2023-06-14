@@ -12,7 +12,6 @@ const UserRouter = () => {
                 <Route element={<Layout/>}>
                     {/*Page d'accueil du site sans aucun caractère*/}
                     <Route index element={<Home/>}/>
-
                     <Route path="/home" element={<Home/>}/>
                     <Route path="/infos/:cid" element={<Infos/>}/>
                     <Route path="/login" element={<Login/>}/>

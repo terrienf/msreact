@@ -1,8 +1,12 @@
 .home {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-gap: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 2em;
 }
+
 
 .home img {
     width: 100%;

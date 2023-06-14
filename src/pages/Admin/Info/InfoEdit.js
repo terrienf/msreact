@@ -1,6 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {infoService} from "../../../services/info.service";
+import '../../../styles/form.css'
 
 
 const InfoEdit = () => {
@@ -53,7 +54,7 @@ const InfoEdit = () => {
 
 
     return (
-        <div className="infoEdit">
+        <div className="form">
             info Edit
             <form onSubmit={onSubmit}>
                 <div className="group">

@@ -15,11 +15,20 @@ const UserEdit = () => {
     //valeurs saisies par l'utilisateur. Elle permet de réagir aux changements d'entrée
     //et de garder les données du formulaire à jour dans l'état du composant.
     const onChange = (e) => {
-        setUser({
-            ...user,
-            [e.target.name]: e.target.value
-        });
-    }
+        const value = e.target.type === "checkbox" ? e.target.checked : e.target.value;
+        if (e.target.name === 'roles') {
+            const roles = value ? ['ROLE_ADMIN'] : ['ROLE_USER'];
+            setUser({
+                ...user,
+                roles: roles,
+            });
+        } else {
+            setUser({
+                ...user,
+                [e.target.name]: value,
+            });
+        }
+    };
     // Soumission du formulaire
     const onSubmit = (e) => {
         e.preventDefault()
@@ -64,10 +73,26 @@ const UserEdit = () => {
                     <label htmlFor="login">Email</label>
                     <input type="text" name="email" value={user.email} onChange={onChange}/>
                 </div>
-                {/*<div className="form-group">*/}
-                {/*    <label htmlFor="password">Mot de passe</label>*/}
-                {/*    <input type="password" name="password" value={user.password} onChange={onChange}/>*/}
-                {/*</div>*/}
+                <div className="form-group">
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="roles"
+                            checked={user.roles && user.roles.includes('ROLE_ADMIN')}
+                            onChange={onChange}
+                        />
+                        Administrateur
+                    </label>
+                    <label>
+                        <input
+                            type="checkbox"
+                            name="roles"
+                            checked={user.roles && user.roles.includes('ROLE_USER')}
+                            onChange={onChange}
+                        />
+                        Utilisateur
+                    </label>
+                </div>
                 <div className="form-group">
                     <button className="add-button">Modifier</button>
                 </div>

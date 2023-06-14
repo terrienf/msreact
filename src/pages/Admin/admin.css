@@ -3,21 +3,24 @@
 }
 
 .SideMenu {
-    flex-grow: 1;
-    border-right: solid 1px grey;
+    flex-grow: 0.2;
+    /*border-right: solid 1px grey;*/
 }
 
-#admin_body{
-    flex-grow: 6;
-    padding-left: 15px;
+#admin_body {
+    display: grid;
+    flex-grow: 2;
+    grid-template-rows: auto;
+    gap: 20px;
+    padding: 2em;
 }
 /********************************/
 
-.SideMenu ul{
+.SideMenu li{
     list-style: none;
 }
 
-.SideMenu ul li a {
+.SideMenu nav ul a {
     text-decoration: none;
     color: black;
 }

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
-import logo from "../user/logo.png";
 import {accountService} from "../../services/account.service";
+import '../../pages/Admin/admin.css'
 
 const SideMenu = ({Roles}) => {
     const [showClientAdd, setShowClientAdd] = useState(false);
@@ -22,12 +22,9 @@ const SideMenu = ({Roles}) => {
     }
 
     return (
-        <div>
+        <div className="SideMenu">
             <nav>
                 <ul>
-                    {/*<li>*/}
-                    {/*    <img src={logo} alt='mediasofts' className='MS-ulogo' />*/}
-                    {/*</li>*/}
                     <li>
                         <Link to="/admin/dashboard"><span className="nav-item">Dashboard</span></Link>
                     </li>

@@ -12,9 +12,10 @@ let addInfo = (info) => {
     return Axios.post('/infos', info)
 }
 
-let updateInfo =(info) => {
-    return Axios.put('/infos/'+info.id, info)
+let updateInfo = (infoId, info) => {
+    return Axios.put('/infos/' + infoId, info);
 }
+
 let deleteInfo = (iid) => {
     return Axios.delete('/infos/'+iid)
 }

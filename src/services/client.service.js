@@ -12,9 +12,10 @@ let addClient = (client) => {
     return Axios.post('/clients', client)
 }
 
-let updateClient =(client) => {
-    return Axios.put('/clients/'+client.id, client)
+let updateClient = (clientId, client) => {
+    return Axios.put('/clients/' + clientId, client);
 }
+
 let deleteClient = (cid) => {
     return Axios.delete('/clients/'+cid)
 }
