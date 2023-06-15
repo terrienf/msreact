@@ -18,41 +18,6 @@ const Infos = () => {
     }, [])
 
     return (
-        // <div>
-        //     <ul>
-        //         <li>{client.name}</li>
-        //         <li>{client.idClient}</li>
-        //         <li>{client.code}</li>
-        //         <li>
-        //             {client.infos && client.infos.length > 0 ? (
-        //                 <ul>
-        //                     {client.infos.map((info) => (
-        //                         <li key={info.id}>
-        //                             <ul>
-        //                                 <li>Version: {info.version}</li>
-        //                                 <li>IP: {info.ipAdress}</li>
-        //                                 <li>Protocole: {info.protocole ? 'HTTP' : 'HTTPS'}</li>
-        //                                 <li>Port: {info.port}</li>
-        //                                 <li>Dernière utilisation : {info.updateAt}</li>
-        //                             </ul>
-        //                                 <td>
-        //                                     <Link to={`/admin/info/infoEdit/${info.id}`}>
-        //                                         <button className="edit_infoButton">Modifier les infos</button>
-        //                                     </Link>
-        //                                 </td>
-        //                         </li>
-        //                     ))}
-        //                 </ul>
-        //             ) : (
-        //                 <li>
-        //                     <Link to={`/admin/info/infoAdd`}>
-        //                         <button className="add_infoButton">Ajouter des infos</button>
-        //                     </Link>
-        //                 </li>
-        //             )}
-        //         </li>
-        //     </ul>
-        // </div>
         <div>
             <div className="products-area-wrapper tableView">
                 <div className="products-header">

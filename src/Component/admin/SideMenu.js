@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from "react-router-dom";
-import {accountService} from "../../services/account.service";
 import '../../pages/Admin/admin.css'
 
 const SideMenu = ({Roles}) => {
@@ -16,10 +15,6 @@ const SideMenu = ({Roles}) => {
     };
 
     let navigate = useNavigate()
-    const logout = () => {
-        accountService.logout()
-        navigate('/')
-    }
 
     return (
         <div className="SideMenu">
@@ -43,10 +38,6 @@ const SideMenu = ({Roles}) => {
                                 <li><Link to="/admin/client/clientAdd">Ajouter</Link></li>
                             </ul>
                         )}
-                    </li>
-
-                    <li>
-                        <button className='logout' onClick={logout}>Logout</button>
                     </li>
                 </ul>
             </nav>

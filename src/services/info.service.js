@@ -12,8 +12,8 @@ let addInfo = (info) => {
     return Axios.post('/infos', info)
 }
 
-let updateInfo = (infoId, info) => {
-    return Axios.put('/infos/' + infoId, info);
+let updateInfo = (iid, info) => {
+    return Axios.put('/infos/' + iid, info);
 }
 
 let deleteInfo = (iid) => {

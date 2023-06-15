@@ -1,23 +1,24 @@
 import React, {useEffect, useRef, useState} from "react";
 import {clientService} from "../../../services/client.service";
-import {Link, useParams} from "react-router-dom";
+import {Link} from "react-router-dom";
 import '../../../styles/test.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTrash} from '@fortawesome/free-solid-svg-icons'
 import {faClipboard} from '@fortawesome/free-solid-svg-icons'
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
+import {faSort} from "@fortawesome/free-solid-svg-icons";
 
 
-const add = <FontAwesomeIcon icon={faPlus} />
+const sort = <FontAwesomeIcon icon={faSort} />
+const add = <FontAwesomeIcon icon={faPlus}/>
 const trash = <FontAwesomeIcon icon={faTrash}/>
 const modify = <FontAwesomeIcon icon={faClipboard}/>
 
 
-const User = () => {
+const Client = () => {
     const [clients, setClients] = useState([])
     const flag = useRef(false)
-    const [client, setClient] = useState({})
-    let {cid} = useParams()
+
 
 
 // Récupération de la liste des clients à l'affichage
@@ -46,14 +47,14 @@ const User = () => {
         <div>
             <div className="ListClient">
                 <div className="client-header">
-                    <div className="category">Clients</div>
-                    <div className="category">Code</div>
-                    <div className="category">IdClient</div>
-                    <div className="category">Protocole</div>
-                    <div className="category">Adresse IP</div>
-                    <div className="category">Version</div>
-                    <div className="category">Port</div>
-                    <div className="category">Mise à jour</div>
+                    <div className="category">Clients {sort}</div>
+                    <div className="category">Code {sort}</div>
+                    <div className="category">IdClient {sort}</div>
+                    <div className="category">Protocole {sort}</div>
+                    <div className="category">Adresse IP {sort}</div>
+                    <div className="category">Version {sort}</div>
+                    <div className="category">Port {sort}</div>
+                    <div className="category">Mise à jour {sort}</div>
                     <div></div>
                     <div></div>
                 </div>
@@ -70,10 +71,9 @@ const User = () => {
                                     <div className="client-cell">{info.version}</div>
                                     <div className="client-cell">{info.port}</div>
                                     <div className="client-cell">{info.updateAt}</div>
-
-                                        <Link to={`/admin/client/clientEdit/${client.id}`}>
-                                            <button className="UserButton" title="Modifier">{modify}</button>
-                                        </Link>
+                                    <Link to={`/admin/client/clientEdit/${client.id}`}>
+                                        <button className="UserButton" title="Modifier">{modify}</button>
+                                    </Link>
                                     <div>
                                         <button className="UserButton" onClick={() => delClient(client.id)}
                                                 title="Supprimer">{trash}</button>
@@ -82,14 +82,18 @@ const User = () => {
                             ))
                         ) : (
                             <React.Fragment>
-                                <div className="product-cell">-</div>
-                                <div className="product-cell">-</div>
-                                <div className="product-cell">-</div>
-                                <div className="product-cell">-</div>
-                                <div className="product-cell">-</div>
+                                <div className="client-cell">-</div>
+                                <div className="client-cell">-</div>
+                                <div className="client-cell">-</div>
+                                <div className="client-cell">-</div>
+                                <div className="client-cell">-</div>
                                 <Link to={`/admin/info/infoAdd`}>
                                     <button className="UserButton" title="Ajouter des infos">{add}</button>
                                 </Link>
+                                <div>
+                                    <button className="UserButton" onClick={() => delClient(client.id)}
+                                            title="Supprimer">{trash}</button>
+                                </div>
                             </React.Fragment>
                         )}
                     </div>
@@ -101,4 +105,4 @@ const User = () => {
     );
 };
 
-export default User;
+export default Client;
