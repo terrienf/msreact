@@ -1,27 +1,34 @@
-import React, {useEffect, useRef, useState} from "react";
-import {clientService} from "../../../services/client.service";
-import {Link} from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { clientService } from "../../../services/client.service";
+import { Link } from "react-router-dom";
 import '../../../styles/test.css';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faTrash, faClipboard, faPlus, faSort} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faClipboard, faPlus, faSort } from "@fortawesome/free-solid-svg-icons";
+import {
+    sortClientsByName,
+    sortClientsByCode,
+    sortClientsById,
+    sortClientsByIPAdresses,
+    sortClientsByVersions,
+    sortClientsByPorts,
+    sortClientsByUpdateAts
+} from "../../../services/tri.service";
 
-const sortIcon = <FontAwesomeIcon icon={faSort}/>;
-const addIcon = <FontAwesomeIcon icon={faPlus}/>;
-const trashIcon = <FontAwesomeIcon icon={faTrash}/>;
-const modifyIcon = <FontAwesomeIcon icon={faClipboard}/>;
+const sortIcon = <FontAwesomeIcon icon={faSort} />;
+const addIcon = <FontAwesomeIcon icon={faPlus} />;
+const trashIcon = <FontAwesomeIcon icon={faTrash} />;
+const modifyIcon = <FontAwesomeIcon icon={faClipboard} />;
 
 const Client = () => {
     const [clients, setClients] = useState([]);
     const flag = useRef(false);
     const [sortDirection, setSortDirection] = useState("asc");
 
-    // Récupération de la liste des clients à l'affichage
     useEffect(() => {
         if (flag.current === false) {
             clientService.getAllClients()
                 .then(res => {
                     console.log(res.data);
-                    // Liste dans le state
                     setClients(res.data);
                 })
                 .catch(err => console.log(err));
@@ -38,187 +45,167 @@ const Client = () => {
     };
 
     const sortClients = () => {
-        const sortedClients = [...clients].sort((a, b) =>
-            a.name.localeCompare(b.name)
-        );
+        const sortedClients = sortClientsByName(clients, sortDirection);
+
         if (sortDirection === "desc") {
-            sortedClients.reverse();
             setSortDirection("asc");
         } else {
             setSortDirection("desc");
         }
+
         setClients(sortedClients);
     };
 
-        const sortCodes = () => {
-            const sortedCodes = [...clients].sort((a, b) =>
-                a.code.localeCompare(b.code)
-            );
-            if (sortDirection === "desc") {
-                sortedCodes.reverse();
-                setSortDirection("asc");
-            } else {
-                setSortDirection("desc");
-            }
-            setClients(sortedCodes);
-        };
+    const sortCodes = () => {
+        const sortedClients = sortClientsByCode(clients, sortDirection);
 
-        const sortIdClients = () => {
-            const sortedIdClients = [...clients].sort((a, b) =>
-                a.idClient.localeCompare(b.idClient)
-            );
-            if (sortDirection === "desc") {
-                sortedIdClients.reverse();
-                setSortDirection("asc");
-            } else {
-                setSortDirection("desc");
-            }
-            setClients(sortedIdClients);
-        };
+        if (sortDirection === "desc") {
+            setSortDirection("asc");
+        } else {
+            setSortDirection("desc");
+        }
 
-        const sortIPAdresses = () => {
-            const sortedClients = [...clients].sort((a, b) => {
-                const ipA = a.infos && a.infos.length > 0 ? a.infos[0].ipAdress : "";
-                const ipB = b.infos && b.infos.length > 0 ? b.infos[0].ipAdress : "";
+        setClients(sortedClients);
+    };
 
-                if (typeof ipA === "string" && typeof ipB === "string") {
-                    return ipA.localeCompare(ipB);
-                } else {
-                    return 0; // Aucun tri si les valeurs ne sont pas des chaînes de caractères
-                }
-            });
+    const sortIdClients = () => {
+        const sortedClients = sortClientsById(clients, sortDirection);
 
-            if (sortDirection === "desc") {
-                sortedClients.reverse();
-                setSortDirection("asc");
-            } else {
-                setSortDirection("desc");
-            }
+        if (sortDirection === "desc") {
+            setSortDirection("asc");
+        } else {
+            setSortDirection("desc");
+        }
 
-            setClients(sortedClients);
-        };
+        setClients(sortedClients);
+    };
 
-        const sortVersions = () => {
-            const sortedClients = [...clients].sort((a, b) => {
-                const versionA = a.infos && a.infos.length > 0 ? a.infos[0].version : "";
-                const versionAB = b.infos && b.infos.length > 0 ? b.infos[0].version : "";
+    const sortIPAdresses = () => {
+        const sortedClients = sortClientsByIPAdresses(clients, sortDirection);
 
-                if (typeof versionA === "string" && typeof versionAB === "string") {
-                    return versionA.localeCompare(versionAB);
-                } else {
-                    return 0; // Aucun tri si les valeurs ne sont pas des chaînes de caractères
-                }
-            });
+        if (sortDirection === "desc") {
+            setSortDirection("asc");
+        } else {
+            setSortDirection("desc");
+        }
 
-            if (sortDirection === "desc") {
-                sortedClients.reverse();
-                setSortDirection("asc");
-            } else {
-                setSortDirection("desc");
-            }
-            setClients(sortedClients);
-        };
+        setClients(sortedClients);
+    };
 
-        const sortPorts = () => {
-            const sortedClients = [...clients].sort((a, b) => {
-                const portA = a.infos && a.infos.length > 0 ? a.infos[0].port : "";
-                const portB = b.infos && b.infos.length > 0 ? b.infos[0].port : "";
+    const sortVersions = () => {
+        const sortedClients = sortClientsByVersions(clients, sortDirection);
 
-                if (typeof portA === "string" && typeof portB === "string") {
-                    return portA.localeCompare(portB);
-                } else {
-                    return 0; // Aucun tri si les valeurs ne sont pas des chaînes de caractères
-                }
-            });
+        if (sortDirection === "desc") {
+            setSortDirection("asc");
+        } else {
+            setSortDirection("desc");
+        }
 
-            if (sortDirection === "desc") {
-                sortedClients.reverse();
-                setSortDirection("asc");
-            } else {
-                setSortDirection("desc");
-            }
-            setClients(sortedClients);
-        };
+        setClients(sortedClients);
+    };
 
-        const sortUpdateAts = () => {
-            const sortedClients = [...clients].sort((a, b) => {
-                const UpdateAtA = a.infos && a.infos.length > 0 ? a.infos[0].updateAt : "";
-                const UpdateAtB = b.infos && b.infos.length > 0 ? b.infos[0].UpdateAt : "";
+    const sortPorts = () => {
+        const sortedClients = sortClientsByPorts(clients, sortDirection);
 
-                if (typeof UpdateAtA === "string" && typeof UpdateAtB === "string") {
-                    return UpdateAtA.localeCompare(UpdateAtB);
-                } else {
-                    return 0; // Aucun tri si les valeurs ne sont pas des chaînes de caractères
-                }
-            });
+        if (sortDirection === "desc") {
+            setSortDirection("asc");
+        } else {
+            setSortDirection("desc");
+        }
 
-            if (sortDirection === "desc") {
-                sortedClients.reverse();
-                setSortDirection("asc");
-            } else {
-                setSortDirection("desc");
-            }
-            setClients(sortedClients);
-        };
-        return (
-    <div>
-        <div className="ListClient">
-            <div className="client-header">
-                <div className="category" onClick={sortClients}>Clients {sortIcon}</div>
-                <div className="category" onClick={sortCodes}>Code {sortIcon}</div>
-                <div className="category" onClick={sortIdClients}>IdClient {sortIcon}</div>
-                <div className="category">Protocole {sortIcon}</div>
-                <div className="category" onClick={sortIPAdresses}>Adresse IP {sortIcon}</div>
-                <div className="category" onClick={sortVersions}>Version {sortIcon}</div>
-                <div className="category" onClick={sortPorts}>Port {sortIcon}</div>
-                <div className="category" onClick={sortUpdateAts}>Mise à jour {sortIcon}</div>
-                <div></div>
-                <div></div>
-            </div>
-            {clients.map(client => (
-                <div className="client-row" key={client.id}>
-                    <div className="client-cell">{client.name}</div>
-                    <div className="client-cell">{client.code}</div>
-                    <div className="client-cell">{client.idClient}</div>
-                    {client.infos && client.infos.length > 0 ? (
-                        client.infos.map((info) => (
-                            <React.Fragment key={info.id}>
-                                <div className="client-cell">{info.protocole ? 'HTTP' : 'HTTPS'}</div>
-                                <div className="client-cell">{info.ipAdress}</div>
-                                <div className="client-cell">{info.version}</div>
-                                <div className="client-cell">{info.port}</div>
-                                <div className="client-cell">{info.updateAt}</div>
-                                <Link to={`/admin/client/clientEdit/${client.id}`}>
-                                    <button className="UserButton" title="Modifier">{modifyIcon}</button>
-                                </Link>
-                                <div>
-                                    <button className="UserButton" onClick={() => delClient(client.id)}
-                                            title="Supprimer">{trashIcon}</button>
-                                </div>
-                            </React.Fragment>
-                        ))
-                    ) : (
-                        <React.Fragment>
-                            <div className="client-cell">-</div>
-                            <div className="client-cell">-</div>
-                            <div className="client-cell">-</div>
-                            <div className="client-cell">-</div>
-                            <div className="client-cell">-</div>
-                            <Link to={`/admin/info/infoAdd`}>
-                                <button className="UserButton" title="Ajouter des infos">{addIcon}</button>
+        setClients(sortedClients);
+    };
+
+    const sortUpdateAts = () => {
+        const sortedClients = sortClientsByUpdateAts(clients, sortDirection);
+
+        if (sortDirection === "desc") {
+            setSortDirection("asc");
+        } else {
+            setSortDirection("desc");
+        }
+
+        setClients(sortedClients);
+    };
+
+    return (
+        <div>
+            <table className="table table-striped table-sm">
+                <thead>
+                <tr>
+                    <th onClick={sortClients} style={{ cursor: "pointer" }}>
+                        Nom {sortIcon}
+                    </th>
+                    <th onClick={sortCodes} style={{ cursor: "pointer" }}>
+                        Code {sortIcon}
+                    </th>
+                    <th onClick={sortIdClients} style={{ cursor: "pointer" }}>
+                        ID {sortIcon}
+                    </th>
+                    <th onClick={sortIPAdresses} style={{ cursor: "pointer" }}>
+                        Adresses IP {sortIcon}
+                    </th>
+                    <th onClick={sortVersions} style={{ cursor: "pointer" }}>
+                        Versions {sortIcon}
+                    </th>
+                    <th onClick={sortPorts} style={{ cursor: "pointer" }}>
+                        Ports {sortIcon}
+                    </th>
+                    <th onClick={sortUpdateAts} style={{ cursor: "pointer" }}>
+                        Date de mise à jour {sortIcon}
+                    </th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {clients.map((client) => (
+                    <tr key={client.id}>
+                        <td>{client.name}</td>
+                        <td>{client.code}</td>
+                        <td>{client.idClient}</td>
+                        <td>
+                            {client.infos && client.infos.length > 0
+                                ? client.infos[0].ipAdress
+                                : ""}
+                        </td>
+                        <td>
+                            {client.infos && client.infos.length > 0
+                                ? client.infos[0].version
+                                : ""}
+                        </td>
+                        <td>
+                            {client.infos && client.infos.length > 0
+                                ? client.infos[0].port
+                                : ""}
+                        </td>
+                        <td>
+                            {client.infos && client.infos.length > 0
+                                ? client.infos[0].updateAt
+                                : ""}
+                        </td>
+                        <td>
+                            <Link
+                                to={`/client/modify/${client.id}`}
+                                className="btn btn-primary btn-sm"
+                            >
+                                {modifyIcon} Modifier
                             </Link>
-                            <div>
-                                <button className="UserButton" onClick={() => delClient(client.id)}
-                                        title="Supprimer">{trashIcon}</button>
-                            </div>
-                        </React.Fragment>
-                    )}
-                </div>
-            ))}
+                            <button
+                                onClick={() => delClient(client.id)}
+                                className="btn btn-danger btn-sm"
+                            >
+                                {trashIcon} Supprimer
+                            </button>
+                        </td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+            <Link to="/client/add" className="btn btn-primary btn-lg">
+                {addIcon} Ajouter un client
+            </Link>
         </div>
-    </div>
-);
-}
-;
+    );
+};
 
 export default Client;

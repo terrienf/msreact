@@ -10,10 +10,22 @@
     overflow: visible;
 }
 
+.card.green {
+    background-color: lightgreen;
+}
+
+.card.yellow {
+    background-color: yellow;
+}
+
+.card.red {
+    background-color: tomato;
+}
+
 .card-details {
     color: black;
     height: 100%;
-    gap: .5em;
+    gap: 0.5em;
     display: grid;
     place-content: center;
 }
@@ -26,7 +38,7 @@
     background-color: #008bf8;
     color: #fff;
     font-size: 1rem;
-    padding: .5rem 1rem;
+    padding: 0.5rem 1rem;
     position: absolute;
     left: 50%;
     bottom: 0;
@@ -34,7 +46,7 @@
     transition: 0.3s ease-out;
 }
 
-.card img{
+.card img {
     width: 100px;
     height: 50px;
     align-items: center;
@@ -45,13 +57,11 @@
     color: rgb(134, 134, 134);
 }
 
-/*Text*/
 .text-title {
     font-size: 1em;
     font-weight: bold;
 }
 
-/*Hover*/
 .card:hover {
     border-color: #008bf8;
     box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
@@ -61,4 +71,3 @@
     transform: translate(-50%, 50%);
     opacity: 1;
 }
-
