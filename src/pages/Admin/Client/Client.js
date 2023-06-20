@@ -4,6 +4,8 @@ import {Link} from "react-router-dom";
 import '../../../styles/test.css';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faTrash, faClipboard, faPlus, faSort} from "@fortawesome/free-solid-svg-icons";
+import dayjs from "dayjs";
+
 
 const sortIcon = <FontAwesomeIcon icon={faSort}/>;
 const addIcon = <FontAwesomeIcon icon={faPlus}/>;
@@ -140,16 +142,12 @@ const Client = () => {
             setClients(sortedClients);
         };
 
-        const sortUpdateAts = () => {
+        const sortByDate = () => {
             const sortedClients = [...clients].sort((a, b) => {
-                const UpdateAtA = a.infos && a.infos.length > 0 ? a.infos[0].updateAt : "";
-                const UpdateAtB = b.infos && b.infos.length > 0 ? b.infos[0].UpdateAt : "";
+                const dateA = a.infos && a.infos.length > 0 ? dayjs(a.infos[0].updateAt) : dayjs('1900-01-01');
+                const dateB = b.infos && b.infos.length > 0 ? dayjs(b.infos[0].updateAt) : dayjs('1900-01-01');
 
-                if (typeof UpdateAtA === "string" && typeof UpdateAtB === "string") {
-                    return UpdateAtA.localeCompare(UpdateAtB);
-                } else {
-                    return 0; // Aucun tri si les valeurs ne sont pas des chaînes de caractères
-                }
+                return dateA - dateB;
             });
 
             if (sortDirection === "desc") {
@@ -158,8 +156,10 @@ const Client = () => {
             } else {
                 setSortDirection("desc");
             }
+
             setClients(sortedClients);
         };
+
         return (
     <div>
         <div className="ListClient">
@@ -171,7 +171,7 @@ const Client = () => {
                 <div className="category" onClick={sortIPAdresses}>Adresse IP {sortIcon}</div>
                 <div className="category" onClick={sortVersions}>Version {sortIcon}</div>
                 <div className="category" onClick={sortPorts}>Port {sortIcon}</div>
-                <div className="category" onClick={sortUpdateAts}>Mise à jour {sortIcon}</div>
+                <div className="category" onClick={sortByDate}>Mise à jour {sortIcon}</div>
                 <div></div>
                 <div></div>
             </div>
@@ -187,7 +187,7 @@ const Client = () => {
                                 <div className="client-cell">{info.ipAdress}</div>
                                 <div className="client-cell">{info.version}</div>
                                 <div className="client-cell">{info.port}</div>
-                                <div className="client-cell">{info.updateAt}</div>
+                                <div className="client-cell">{dayjs(info.updateAt).format("DD-MM-YYYY")}</div>
                                 <Link to={`/admin/client/clientEdit/${client.id}`}>
                                     <button className="UserButton" title="Modifier">{modifyIcon}</button>
                                 </Link>
