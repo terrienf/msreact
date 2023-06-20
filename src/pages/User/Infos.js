@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { clientService } from "../../services/client.service";
 import { useParams } from "react-router-dom";
 import '../../styles/test.css'
+import dayjs from "dayjs";
 
 const Infos = () => {
     const [client, setClient] = useState({});
@@ -34,7 +35,7 @@ const Infos = () => {
                                     <span className="status active">HTTP</span>
                                 </div>
                                 <div className="product-cell price"><span className="cell-label">Port:</span>{info.port}</div>
-                                <div className="product-cell price"><span className="cell-label">Mise à jour:</span>{info.updateAt}</div>
+                                <div className="product-cell price"><span className="cell-label">Mise à jour:</span>{dayjs(info.updateAt).format("DD-MM-YYYY")}</div>
                             </div>
                         ))
                     )}

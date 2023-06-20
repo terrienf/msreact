@@ -38,7 +38,7 @@ const Dashboard = () => {
                 }
 
                 return (
-                    <Card key={id} client={client} image='https://picsum.photos/200/300?random=' cardColor={cardColor} />
+                    <Card key={id} client={client} cardColor={cardColor} />
                 );
             })}
         </div>
