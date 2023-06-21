@@ -3,7 +3,9 @@ import {Route, Routes} from "react-router-dom";
 import Login from "../Auth/Login";
 import Error from "../../utils/error";
 
-import {Layout, Home, Infos} from "../User"
+import {Home, Layout} from "../User/"
+// import Infos from "../Admin/Infos";
+
 
 const UserRouter = () => {
     return (
@@ -13,9 +15,8 @@ const UserRouter = () => {
                     {/*Page d'accueil du site sans aucun caractère*/}
                     <Route index element={<Home/>}/>
                     <Route path="/home" element={<Home/>}/>
-                    <Route path="/infos/:cid" element={<Infos/>}/>
+                    {/*<Route path="infos/:cid" element={<Infos />} />*/}
                     <Route path="/login" element={<Login/>}/>
-
                     <Route path="*" element={<Error/>}/>
                 </Route>
 

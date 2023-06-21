@@ -1,26 +1,61 @@
-#admin{
+.ALayout {
     display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
-.SideMenu {
-    flex-grow: 0.2;
-    /*border-right: solid 1px grey;*/
+.ALayout > div {
+    padding: 20px;
+}
+
+.Header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px;
+}
+
+#admin {
+    display: flex;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px;
+    justify-content: space-between;
+    height: 100%;
 }
 
 #admin_body {
-    display: grid;
-    flex-grow: 2;
-    grid-template-rows: auto;
-    gap: 20px;
-    padding: 2em;
+    flex-grow: 1;
+    padding: 10px;
+    align-items: center;
 }
-/********************************/
 
-.SideMenu li{
+.SideMenu {
+    width: 200px; /* Largeur fixe de la SideMenu */
+    flex-shrink: 0; /* Empêche la SideMenu de se rétrécir */
+    border-right: solid 1px grey;
+    background-color: #f8f9fa;
+    padding: 10px;
+}
+
+.SideMenu ul {
+    padding: 0;
+    margin: 0;
+}
+
+.SideMenu li {
     list-style: none;
+    margin-bottom: 10px;
 }
 
-.SideMenu nav ul a {
+.SideMenu a {
+    display: block;
+    padding: 10px;
+    color: #333;
     text-decoration: none;
-    color: black;
+    transition: background-color 0.3s ease;
+}
+
+.SideMenu a:hover {
+    background-color: #e5e5e5;
+    color: #000;
 }

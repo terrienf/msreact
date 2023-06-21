@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import {clientService} from "../../../services/client.service";
-import '../../../styles/form.css'
 
 const ClientAdd = () => {
     const [client, setClient] = useState([])

@@ -1,7 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import {useNavigate, useParams} from "react-router-dom";
 import {clientService} from "../../../services/client.service";
-import '../../../styles/form.css'
 import {infoService} from "../../../services/info.service";
 
 
@@ -137,7 +136,7 @@ const ClientEdit = () => {
                 <div className="form-group">
                     <button className="add-button">Modifier</button>
                 </div>
-                {JSON.stringify(infos)}
+                {/*{JSON.stringify(infos)}*/}
             </form>
         </div>
     );

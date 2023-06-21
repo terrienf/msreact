@@ -44,9 +44,8 @@ const User = () => {
     }
 
     return (
-
-        <div>
             <div className="ListClient">
+                <h1>Liste des utilisateurs</h1>
                 <div className="user-header">
                     <div className="category">Nom</div>
                     <div className="category">Prénom</div>
@@ -76,7 +75,7 @@ const User = () => {
                     </div>
                 ))}
             </div>
-        </div>
+
 
 
     );

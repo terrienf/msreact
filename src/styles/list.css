@@ -1,6 +1,31 @@
-.list {
-    padding: 10px;
-    align-items: center;
+.ListClient {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 2em;
+    padding-right: 30em;
+    padding-left: 25em;
+}
+
+.ListClient h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    text-shadow: 1px 1px #ddd;
+}
+
+.ListClient2 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-right: 20%;
+}
+
+.ListClient2 h1 {
+    text-align: center;
+    font-size: 2em;
+    color: #333;
+    text-shadow: 1px 1px #ddd;
 }
 
 .leaderboard__profiles {
@@ -72,3 +97,57 @@
     margin: 0 auto;
 }
 
+.user-header {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    font-weight: bold;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.user-row {
+    display: grid;
+    font-size: 13px;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.client-header {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    font-weight: bold;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.client-row {
+    display: grid;
+    font-size: 13px;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 10px;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.user-cell {
+    width: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.category {
+    width: 130px;
+}

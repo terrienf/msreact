@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
 import {useNavigate} from "react-router-dom";
 import {infoService} from "../../../services/info.service";
+import '../../../styles/form.css'
+
 
 const InfoAdd = () => {
     const [info, setInfo] = useState({});
@@ -29,22 +31,24 @@ const InfoAdd = () => {
     };
 
     return (
-        <div className="infoAdd">
-            info Add
+        <div className="form">
             <form onSubmit={onSubmit}>
-                <div className="group">
+                <div className="card-header">
+                    <h1>Ajouter Informations</h1>
+                </div>
+                <div className="card-body">
+                    <div className="form-group"></div>
                     <label htmlFor="version">Version</label>
                     <input type="text" name="version" onChange={onChange} />
-                </div>
-                <div className="group">
+                <div className="form-group">
                     <label htmlFor="ipAdress">ipAdress</label>
                     <input type="text" name="ipAdress" onChange={onChange} />
                 </div>
-                <div className="group">
+                <div className="form-group">
                     <label htmlFor="port">Port</label>
                     <input type="text" name="port" onChange={onChange} />
                 </div>
-                <div className="group">
+                <div className="form-group">
                     <label>
                         <input
                             type="checkbox"
@@ -62,13 +66,14 @@ const InfoAdd = () => {
                         HTTPS
                     </label>
                 </div>
-                <div className="group">
+                <div className="form-group">
                     <label htmlFor="updateAt">Mise à jour le : </label>
                     <input type="date" name="updateAt" onChange={onChange} />
                 </div>
-                {JSON.stringify(info)}
-                <div className="group">
-                    <button>Ajouter</button>
+                </div>
+                {/*{JSON.stringify(info)}*/}
+                <div className="form-group">
+                    <button className="add-button">Ajouter</button>
                 </div>
             </form>
         </div>
