@@ -1,12 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import {clientService} from "../../services/client.service";
-import {useParams} from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { clientService } from "../../services/client.service";
+import { useParams } from "react-router-dom";
+import '../../styles/form2.css';
 import dayjs from "dayjs";
-import '../../styles/form2.css'
+import 'dayjs/locale/fr';
 
 const Infos = () => {
     const [client, setClient] = useState({});
-    let {cid} = useParams();
+    let { cid } = useParams();
 
     useEffect(() => {
         clientService.getClient(cid)
@@ -15,7 +16,6 @@ const Infos = () => {
                 setClient(res.data);
             })
             .catch(err => console.log(err));
-
     }, []);
 
     return (
@@ -52,7 +52,7 @@ const Infos = () => {
                         </div>
                         <div className="form2-group">
                             <label>Mise à jour:</label>
-                            <span>{dayjs(info.updateAt).format("DD-MM-YYYY")}</span>
+                            <span>{dayjs(info.updateAt).locale('fr').subtract(2, "hours").format("D MMMM YYYY à HH:mm")}</span>
                         </div>
                     </React.Fragment>
                 ))
@@ -62,7 +62,7 @@ const Infos = () => {
                 </div>
             )}
         </div>
-
     );
 }
-export default Infos
+
+export default Infos;

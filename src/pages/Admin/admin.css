@@ -1,3 +1,8 @@
+body{
+    background-image: url("./MS-fond.png");
+    background-size: 100% 178%;
+}
+
 .ALayout {
     display: flex;
     flex-direction: column;
@@ -18,7 +23,7 @@
     display: flex;
     border-radius: 10px;
     box-sizing: border-box;
-    padding: 20px;
+    /*padding: 20px;*/
     justify-content: space-between;
     height: 100%;
 }
@@ -32,8 +37,6 @@
 .SideMenu {
     width: 200px; /* Largeur fixe de la SideMenu */
     flex-shrink: 0; /* Empêche la SideMenu de se rétrécir */
-    border-right: solid 1px grey;
-    background-color: #f8f9fa;
     padding: 10px;
 }
 
@@ -53,9 +56,4 @@
     color: #333;
     text-decoration: none;
     transition: background-color 0.3s ease;
-}
-
-.SideMenu a:hover {
-    background-color: #e5e5e5;
-    color: #000;
 }

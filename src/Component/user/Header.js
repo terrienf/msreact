@@ -6,16 +6,15 @@ import logo from './logo.png'
 const Header = () => {
     return (
         <header className='uheader'>
-            <img src={logo} alt='mediasofts' className='MS-ulogo'/>
+            <img src={logo} alt='mediasofts' className='MS-alogo'/>
             <nav>
                 <ul>
-                    <li><Link to="home">Accueil</Link></li>
-                    {/*<li><Link to="infos">Infos</Link></li>*/}
-                    {/*<li><Link to="clients">Clients</Link></li> |*/}
-                    <li><Link to="admin">Login</Link></li>
+                    <li><Link to="/home">Accueil</Link></li>
                 </ul>
             </nav>
+            <a><Link className="button" to="admin">Login</Link></a>
         </header>
+
     );
 };
 

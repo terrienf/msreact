@@ -18,9 +18,9 @@ const Header = () => {
             <nav>
                 <ul>
                     <li><Link to="/home">Accueil</Link></li>
-                    <button onClick={logout}>Logout</button>
                 </ul>
             </nav>
+            <a className="button" onClick={logout}>Logout</a>
         </header>
     );
 };

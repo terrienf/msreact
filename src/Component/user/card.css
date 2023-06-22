@@ -1,73 +1,96 @@
 .card {
-    width: 100px;
-    height: 164px;
-    border-radius: 20px;
-    background: #f5f5f5;
-    position: relative;
-    padding: 1.9rem;
-    border: 1px solid #c3c6ce;
-    transition: 0.5s ease-out;
-    overflow: visible;
+    width: 160px;
+    height: 224px;
+    background: transparent;
+    border: 2px solid #07ff07;
+    border-radius: 10px;
+    box-shadow: 2px 2px 15px #000000 inset;
+    text-align: center;
+    color: #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Pacifico';
+    text-decoration: none;
+}
+
+.text-title {
+    color: black;
+    font-size: 1em;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .card.green {
     background-color: lightgreen;
+    background: lightgreen;
+    border: 2px solid lightgreen;
+    box-shadow: 2px 2px 15px #000000 inset;
+    text-align: center;
+    color: #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Pacifico';
 }
 
 .card.yellow {
     background-color: yellow;
+    background: yellow;
+    border: 2px solid yellow;
+    box-shadow: 2px 2px 15px #000000 inset;
+    text-align: center;
+    color: #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Pacifico';
+
 }
 
 .card.red {
     background-color: tomato;
-}
-
-.card-details {
-    color: black;
-    height: 100%;
-    gap: 0.5em;
-    display: grid;
-    place-content: center;
-}
-
-.card-button {
-    transform: translate(-50%, 125%);
-    width: 60%;
-    border-radius: 1rem;
-    border: none;
-    background-color: #008bf8;
-    color: #fff;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    opacity: 0;
-    transition: 0.3s ease-out;
-}
-
-.card img {
-    width: 100px;
-    height: 50px;
+    background: tomato;
+    border: 2px solid tomato;
+    box-shadow: 2px 2px 15px #000000 inset;
+    text-align: center;
+    color: #e8e8e8;
+    display: flex;
     align-items: center;
     justify-content: center;
+    font-family: 'Pacifico';
 }
 
-.text-body {
-    color: rgb(134, 134, 134);
-}
 
-.text-title {
-    font-size: 1em;
-    font-weight: bold;
-}
 
-.card:hover {
-    border-color: #008bf8;
-    box-shadow: 0 4px 18px 0 rgba(0, 0, 0, 0.25);
-}
 
-.card:hover .card-button {
-    transform: translate(-50%, 50%);
-    opacity: 1;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
