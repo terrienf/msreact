@@ -26,7 +26,7 @@ const InfoAdd = () => {
         console.log(info);
         infoService
             .addInfo(info)
-            .then((res) => navigate('../index'))
+            .then((res) => navigate('../../client/index'))
             .catch((err) => console.log(err));
     };
 

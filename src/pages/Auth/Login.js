@@ -8,8 +8,6 @@ const Login = () => {
     // const [login, setLogin] = useState('')
     // const[password, setPassword] = useState('')
     const [credentials, setCredentials] = useState({
-        username: "admin@ms.com",
-        password: "password",
     })
 
 //Gestion de la modification des champs du formulaire de login
@@ -25,7 +23,6 @@ const Login = () => {
         accountService.login(credentials)
             .then(res => {
                 //Sauvegarde du token et envoi vers admin
-                console.log({username: credentials.username, password: '********'})
                 accountService.saveToken(res.data.token)
                 const roles = res.data.roles;
                 console.log("Roles:", roles);
